@@ -40,12 +40,12 @@ Things you may want to cover:
 ## adressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name_last|string|null: false|
-|name_last_kana|string|null: false|
+|family_name|string|null: false|
+|family_name_kana|string|null: false|
 |name_first|string|null: false|
 |name_first_kana|string|null: false|
 |postal_code|string|null: false|
-|ken_name|string|null: false|
+|prefecture|string|null: false|
 |city_name|string|null: false|
 |bilding|string|null: true|
 |tel_phone|string|null: false|
@@ -57,15 +57,15 @@ Things you may want to cover:
 ## productsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|references|null: false, foreign_key: true|
-|description|references|null: false, foreign_key: true|
+|name|string|null: false|
+|description|string|null: false|
 |category|string|null: false|
-|status|text|null: false|
-|prise|string|null: false|
-|sold|tstring|null: false|
+|product_status|text|null: false|
+|price|string|null: false|
+|status|integer|enum|
 |transaction|text|null: false|
-|user|string|null: false, foreign_key: true|
-|evaluation|string|null: , foreign_key: true|
+|user|refernces|null: false, foreign_key: true|
+|evaluation|refernces|null: , foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -89,7 +89,7 @@ Things you may want to cover:
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|references|null: false, foreign_key: true|
+|name|string|null: false|
 
 ### Association
 - belongs_to :group
@@ -98,10 +98,10 @@ Things you may want to cover:
 ## evaluationsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|rate|references|null: false|
+|rate|string|null: false|
 |review|references|null: false|
-|product|text|null: false, foreign_key: true|
-|user|string|null: false, foreign_key: true|
+|product_id|text|null: false, foreign_key: true|
+|user_id|string|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
