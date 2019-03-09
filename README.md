@@ -29,6 +29,7 @@ Things you may want to cover:
 |nickname|string|null: false,index: true|
 |email|string|null: false, unique: true|
 |password|string|null: false|
+|rate|string|null: false|
 |profile|text|
 
 ### Association
@@ -66,7 +67,9 @@ Things you may want to cover:
 |delivery_fee|string||null: false|
 |delivery_from|string||null: false|
 |delivery_day|string||null: false|
+|comment|text|
 |status|value|enum|
+|like_count|integer|defult:0|
 |user_id|refernces|null: false, foreign_key: true|
 |review_id|refernces|null: , foreign_key: true|
 
@@ -74,6 +77,7 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :review
 - has_many :images
+- has_many :likes
 
 ## paiesテーブル
 |Column|Type|Options|
@@ -96,10 +100,21 @@ Things you may want to cover:
 ### Association
 - belongs_to :product
 
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|refernces|null: false, foreign_key: true|
+|product_id|refernces|null: false, foreign_key: true|
+
+
+### Association
+- belongs_to :product
+
 ## reviewテーブル
 |Column|Type|Options|
 |------|----|-------|
 |review|string|null: false|
+|comment|text|
 |customer_id|references|null: false, foreign_key: true|
 |product_id|references|null: false, foreign_key: true|
 
