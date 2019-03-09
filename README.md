@@ -44,12 +44,13 @@ Things you may want to cover:
 |family_name_kana|string|null: false|
 |name_first|string|null: false|
 |name_first_kana|string|null: false|
-|postal_code|string|null: false|
+|postal_code|integer|null: false|
 |prefecture|string|null: false|
 |city_name|string|null: false|
 |bilding|string|null: true|
-|tel_phone|string|null: false|
-|tel_home|string|null: ture|
+|tel_phone|integer|null: false|
+|tel_home|integer|null: ture|
+|user_id|refernces|null: false, foreign_key: true|
 
 ### Association
 - belongs_to user
@@ -60,28 +61,26 @@ Things you may want to cover:
 |name|string|null: false|
 |description|string|null: false|
 |category|string|null: false|
-|product_status|text|null: false|
-|price|string|null: false|
-|status|integer|enum|
-|transaction|text|null: false|
-|user|refernces|null: false, foreign_key: true|
-|evaluation|refernces|null: , foreign_key: true|
+|product_status|string|null: false|
+|price|integer|null: false|
+|status|value|enum|
+|transaction|string||null: false|
+|user_id|refernces|null: false, foreign_key: true|
+|review_id|refernces|null: , foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to :evaluation
+- belongs_to :review
 - has_many :images
 
 ## paiesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|cardnumber|references|null: false|
-|month|references|null: false|
-|day|string|null: false|
-|code|text|null: false|
-|banck|string|null: false|
-|tatemono|text|null: false|
-|cardnumber|string|null: false|
+|cardnumber|integer|null: false|
+|month|integer|null: false|
+|day|integer|null: false|
+|code|integer|null: false|
+|user_id|refernces|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -89,20 +88,31 @@ Things you may want to cover:
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|product_id|refernces|null: false, foreign_key: true|
+
 
 ### Association
-- belongs_to :group
-- belongs_to :user
+- belongs_to :product
 
 ## evaluationsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |rate|string|null: false|
-|review|references|null: false|
-|product_id|text|null: false, foreign_key: true|
-|user_id|string|null: false, foreign_key: true|
+|review_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
+- belongs_to :review
+
+## reviewテーブル
+|Column|Type|Options|
+|------|----|-------|
+|review|string|null: false|
+|product_id|references|null: false, foreign_key: true|
+
+
+### Association
 - belongs_to :evaluation
+- belongs_to :product
+
