@@ -77,8 +77,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |cardnumber|integer|null: false|
-|month|integer|null: false|
-|day|integer|null: false|
+|expiration_date|date|null: false|
 |code|integer|null: false|
 |user_id|refernces|null: false, foreign_key: true|
 
@@ -88,6 +87,7 @@ Things you may want to cover:
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
+|image_name|string|null: false|
 |product_id|refernces|null: false, foreign_key: true|
 
 
