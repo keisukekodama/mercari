@@ -34,7 +34,7 @@ Things you may want to cover:
 ### Association
 - has_many :paies
 - has_many :productes
-- has_many :evaluations
+- has_many :reviews
 - belongs_to :adress
 
 ## adressesテーブル
@@ -63,8 +63,10 @@ Things you may want to cover:
 |category|string|null: false|
 |product_status|string|null: false|
 |price|integer|null: false|
+|delivery_fee|string||null: false|
+|delivery_from|string||null: false|
+|delivery_day|string||null: false|
 |status|value|enum|
-|transaction|string||null: false|
 |user_id|refernces|null: false, foreign_key: true|
 |review_id|refernces|null: , foreign_key: true|
 
@@ -94,25 +96,15 @@ Things you may want to cover:
 ### Association
 - belongs_to :product
 
-## evaluationsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|rate|string|null: false|
-|review_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :review
-
 ## reviewテーブル
 |Column|Type|Options|
 |------|----|-------|
 |review|string|null: false|
+|customer_id|references|null: false, foreign_key: true|
 |product_id|references|null: false, foreign_key: true|
 
 
 ### Association
-- belongs_to :evaluation
+- belongs_to :user
 - belongs_to :product
 
